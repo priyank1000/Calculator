@@ -1,0 +1,87 @@
+ComplexNumber INHERITS from RealNumber
+
+Class Fields: imagPart
+
+Default constructor
+	IMPORT none
+		super
+		imagPart = 0.0
+
+Alternate Constructor
+	IMPORT inNumber, inImagPart
+		super <--- inNumber
+		imagPart = 0.0
+		setImagPart = inImagPart
+		
+Copy constructor
+	IMPORT inComplexNumber (ComplexNumber)
+		super <--- inComplexNumber
+		imagPart = inComplexNumber.getImagPart
+
+Accessor getImagPart
+	IMPORT none
+	EXPORT imagPart
+
+Mutator setComplexNumber
+	IMPORT inImagPart
+	EXPORT none
+		setImagPart <--- inImagPart
+
+Mutator setImagPart
+	IMPORT inImagPart
+	EXPORT none
+		imagPart = inImagPart
+
+Mutator setRealPart
+	IMPORT inRealPart
+	EXPORT none
+		super.setNumber <--- inRealPart
+
+Mutator addition
+	IMPORT inNumber (ComplexNumber)
+	EXPORT none
+		super.setNumber(super.getNumber + inNumber.getNumber)
+	 	setImagPart(imagPart + inNumber.getImagPart)
+	
+Mutator subtract
+	IMPORT inNumber (ComplexNumber)
+	EXPORT none
+		super.setNumber(super.getNumber - inNumber.getNumber) 
+	 	setImagPart(imagPart - inNumber.getImagPart)
+
+Mutator multiply
+	IMPORT inNumber (ComplexNumber)
+	EXPORT none
+		realPart = super.getNumber
+		super.setNumber(realPart * inNumber.getNumber - imagPart * inNumber.getImagPart
+	 	setImagPart(imagPart * inNumber.getNumber + realPart * inNumber.getImagPart
+
+Mutator division
+	IMPORT inNumber (ComplexNumber)
+	EXPORT none
+		realPart = super.getNumber
+		IF absolute(inNumber.getNumber) >= 0.001 || absolute(inNumber.getImagPart) >= 0.001 THEN
+			super.setNumber((realPart * inNumber.getNumber + imagPart *  inNumber.getImagPart) / (inNumber.getNumber * inNumber.getNumber + inNumber.getImagPart * inNumber.getImagPart))
+	 		setImagPart((imagPart * inNumber.getNumber - realPart * inNumber.getImagPart) / (inNumber.getNumber * inNumber.getNumber + inNumber.getImagPart * inNumber.getImagPart))
+		ELSE
+			OUTPUT "Division is undefined, because the denomenator = 0"
+		ENDIF
+		
+Accessor equals 
+	IMPORT inComplexNumber (ComplexNumber)
+	EXPORT valid
+		valid = false
+		IF (super.equals <--- inComplexNumber.getImagPart) AND (imagPart is the same as inComplexNumber.getImagPart) THEN
+			valid = true
+		ENDIF
+
+Accessor toString
+	IMPORT none
+	EXPORT outString
+		outString = super.toString + " + " + imagPart + "i"
+
+
+
+		
+	
+		

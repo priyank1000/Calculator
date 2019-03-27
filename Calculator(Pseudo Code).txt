@@ -1,0 +1,118 @@
+MAIN
+	OUTPUT "Select 1 for inputting real number"
+	OUTPUT "Select 2 for inputting complex number"
+	OUTPUT "Select 3 to exit the program"
+	INPUT select
+
+	WHILE (select != 3)
+		select = validSelect <--- select
+		IF (select == 1) THEN
+			INPUT num1
+			realNum1 <--- (RealNumber)
+			INPUT num2
+			realNum2 <--- (RealNumber)
+
+			OUTPUT "Choose 1: Add the numbers"
+			OUTPUT "Choose 2: Subtract the numbers"
+			OUTPUT "Choose 3: Multiply the numbers"
+			OUTPUT "Choose 4: Divide the numbers"
+			
+			INPUT choice
+			choice = validChoice <--- choice
+			
+			Case choice
+				case 1:
+					 realNum1.add <--- realNum2
+					 realNum1.setNumber(Math.round(realNum1.getNumber * 10000.0) / 10000.0)
+				      OUTPUT "Result = ", realNum1.toString
+						  
+				case 2:
+					 realNum1.subtract <--- realNum2
+				 	 realNum1.setNumber(Math.round(realNum1.getNumber * 10000.0) / 10000.0)
+				      OUTPUT "Result = ", realNum1.toString
+						  
+				case 3:
+					 realNum1.multiply <--- realNum2;
+				      realNum1.setNumber(Math.round(realNum1.getNumber * 10000.0) / 10000.0);
+				      OUTPUT "Result = ", realNum1.toString
+						
+				case 4:
+					IF (Math.abs(realNum2.getNumber) >= 0.001)
+						  
+						realNum1.setNumber(Math.round(realNum1.getNumber * 10000.0) / 10000.0);
+						OUTPUT "Result = ", realNum1.toString
+					ELSE
+				  		OUTPUT "Divion undefined, because the denomenator = 0"
+					ENDIF
+			ENDCASE
+		ENDIF
+
+		ELSE IF (select == 2) THEN
+			INPUT real1, comp1
+			compNum1 = real1, comp1 <--- ComplexNumber
+			INPUT real2, comp2
+			compNum2 = real2, comp2 <--- ComplexNumber
+
+			OUTPUT "Choose 1: Add the numbers"
+			OUTPUT "Choose 2: Subtract the numbers"
+			OUTPUT "Choose 3: Multiply the numbers"
+			OUTPUT "Choose 4: Divide the numbers"
+			
+			INPUT choice
+			choice = validChoice <--- choice
+
+			Case choice
+				case 1:
+					 compNum1.add <--- compNum2
+					 compNum1.setNumber(Math.round(compNum1.getNumber * 10000.0) / 10000.0
+					 OUTPUT "Result = ", compNum1.toString)
+						 
+				case 2:
+					 compNum1.subtract <--- compNum2
+					 compNum1.setNumber(Math.round(compNum1.getNumber * 10000.0) / 10000.0
+					 OUTPUT "Result = ", compNum1.toString
+						 
+				case 3:
+					 compNum1.multiply <--- compNum2
+				      compNum1.setNumber(Math.round(compNum1.getNumber * 10000.0) / 10000.0);
+					 OUTPUT "Result = ", compNum1.toString
+						 
+				case 4:
+					 IF (Math.abs(compNum2.getNumber) >= 0.001 || Math.abs(compNum2.getImagPart) >= 0.001) THEN					
+						compNum1.setNumber(Math.round(compNum1.getNumber * 10000.0) / 10000.0
+						OUTPUT "Result = ", compNum1.toString					  	  
+					 ELSE						  
+						OUTPUT "Division invalid, because denomenator = 0	
+					 ENDIF				 
+			ENDCASE
+		ENDIF
+
+		OUTPUT "Select 1 for inputting real number"
+		OUTPUT "Select 2 for inputting complex number"
+		OUTPUT "Select 3 to exit the program"
+		INPUT select 
+	ENDWHILE
+ENDMAIN
+
+	SUBMODULE validSelect
+		IMPORT select
+		EXPORT select
+			WHILE select < 1 OR select > 3 
+				OUTPUT "Invalid selection, Please enter 1, 2, or 3 to progress"
+				INPUT select
+			ENDWHILE
+	END
+	
+	SUBMODULE validChoice
+		IMPORT 
+		EXPORT
+			WHILE choice < 1 OR choice > 4
+				OUTPUT "Invalid choice, Please enter 1, 2, 3, or 4 to progress"
+				INPUT choice
+			ENDWHILE
+	END
+	
+	
+	
+	
+		

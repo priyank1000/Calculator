@@ -1,0 +1,71 @@
+Class: RealNumber
+
+Class Fields: number
+
+Default constructor
+	IMPORT none
+		number = 0.0
+
+Alternate Constructor
+	IMPORT inNumber
+		number = 0.0
+		setRealNumber <--- inNumber
+		
+Copy constructor
+	IMPORT inNumber (realNumber)
+		number = inNumber.getNumber
+
+Accessor getNumber
+	IMPORT none
+	EXPORT number
+
+Mutator setRealNumber
+	IMPORT inNumber
+	EXPORT none
+		setNumber <--- inNumber
+
+Mutator setNumber
+	IMPORT inNumber
+	EXPORT none
+		number = inNumber
+
+Mutator addition
+	IMPORT inNumber (RealNumber)
+	EXPORT none
+		number = number + inNumber.getNumber
+	
+Mutator subtract
+	IMPORT inNumber (RealNumber)
+	EXPORT none
+		number = number - inNumber.getNumber 
+
+Mutator multiply
+	IMPORT inNumber (RealNumber)
+	EXPORT none
+		number = number * inNumber.getNumber 
+
+Mutator division
+	IMPORT inNumber (RealNumber)
+	EXPORT none
+		IF math.abs(inNumber.getNumber >= 0.001) THEN
+			number = number / inNumber.getNumber
+		ELSE
+			OUTPUT ""Division is undefined, because the denomenator = 0"
+
+Accessor equals 
+	IMPORT inRealNumber (RealNumber)
+	EXPORT valid
+		valid = false
+		IF number is same as inRealNumber.getNumber THEN
+			valid = true
+		ENDIF
+
+Accessor toString
+	IMPORT none
+	EXPORT outString
+		outString = "", number
+
+
+		
+	
+		
